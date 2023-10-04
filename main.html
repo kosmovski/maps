@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Отримання координат</title>
+</head>
+<body>
+    <h1>Координати користувача</h1>
+    <p>Широта: <span id="latitude"></span></p>
+    <p>Довгота: <span id="longitude"></span></p>
+
+    <script>
+        function getLocation() {
+            if ("geolocation" in navigator) {
+                // Отримання координат
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    var latitude = position.coords.latitude;
+                    var longitude = position.coords.longitude;
+
+                    // Виведення координат на сторінці
+                    document.getElementById("latitude").textContent = latitude;
+                    document.getElementById("longitude").textContent = longitude;
+                });
+            } else {
+                alert("Геолокація не підтримується цим браузером.");
+            }
+        }
+
+        // Виклик функції отримання координат
+        getLocation();
+    </script>
+</body>
+</html>
